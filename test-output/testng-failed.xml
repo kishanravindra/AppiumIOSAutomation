@@ -5,11 +5,7 @@
     <classes>
       <class name="com.qwinix.awsdev.screens.LoginScreen">
         <methods>
-          <include name="loginWithValidCredentialsAndInvalidPin"/>
-          <include name="loginWithInvalidEmail"/>
-          <include name="loginWithValidCredentialsAndPin"/>
-          <include name="testForgotAction"/>
-          <include name="loginWithInvalidCredentials"/>
+          <include name="runningTest"/>
           <include name="teardown"/>
           <include name="setup"/>
         </methods>

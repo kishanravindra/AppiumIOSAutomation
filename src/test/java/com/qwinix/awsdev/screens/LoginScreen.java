@@ -29,26 +29,28 @@ public class LoginScreen{
 		
 		//File ipaBuild = new File("builds_ipa/DocDock.ipa");
 		DesiredCapabilities capabilities = new DesiredCapabilities();
-	   /* capabilities.setCapability("udid", "5613fb36482321818bb951f77507878de144feb5");
+		/*capabilities.setCapability("udid", "5613fb36482321818bb951f77507878de144feb5");
 		capabilities.setCapability("platformName", "iOS");
 		capabilities.setCapability("platformVersion", "11.2");
 		capabilities.setCapability("bundleId","com.docdock.ios");
 		capabilities.setCapability("deviceName", "iPhone");
-		capabilities.setCapability("app", ipaBuild);
+		capabilities.setCapability("app", ipaBuild);*/
 		
-		capabilities.setCapability("bundleId","com.docdock.ios");*/
+		//capabilities.setCapability("bundleId","com.docdock.ios");
 		driver = new IOSDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 		// Create an implicitly wait instance to define the timeout for 'findElement' commands.
-		driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		
 		Alert notificationAlert = driver.switchTo().alert();
 		notificationAlert.accept();
 	}
 	
-	@Test 
-	public void loginWithInvalidEmail() throws InterruptedException {
+	@Test (priority= 1)
+	//loginWithInvalidEmail
+	public void runningTest() throws InterruptedException {
+	    WebDriverWait wait = new WebDriverWait(driver, 20);
+
 		System.out.println("Invalid Email called");
-    	    WebDriverWait wait = new WebDriverWait(driver, 15);
     	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("emailField")));
 		driver.findElementByAccessibilityId("emailField").sendKeys("kishan@");
 	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("passwordField")));
@@ -68,9 +70,102 @@ public class LoginScreen{
 		driver.findElementByAccessibilityId("emailField").clear();
 		driver.findElementByAccessibilityId("passwordField").clear();
 		Thread.sleep(2500);
-	}
+		
+		
+		 System.out.println("InValid credndentials");
+    	     wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("emailField")));
+		 driver.findElementByAccessibilityId("emailField").sendKeys("iosuser@yopmail.com");
+		 wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("passwordField")));
+		 driver.findElementByAccessibilityId("passwordField").sendKeys("passwordM1");
+		 driver.findElementByAccessibilityId("loginBtn").click();
+		 Thread.sleep(1500);
+		
+		 wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("Invalid Login")));
+		
+         Boolean isInvalidAlertDisplayed = driver.findElementByAccessibilityId("Invalid Login").isDisplayed();
+        
+		Assert.assertTrue(isInvalidAlertDisplayed);
+		Thread.sleep(2500);
+		Assert.assertEquals(driver.findElementByAccessibilityId("Invalid Login").getText(), "Invalid Login");
+		Alert invalidLoginAlert = driver.switchTo().alert();
+		invalidLoginAlert.accept();
+		Thread.sleep(3500);
+		driver.findElementByAccessibilityId("emailField").clear();
+		driver.findElementByAccessibilityId("passwordField").clear();
+		Thread.sleep(3000);
+		
+		System.out.println("Valid credndentials and invalid pin");
+		Thread.sleep(1500);
+		driver.findElementByAccessibilityId("emailField").sendKeys("rkishan@qwinix.io");
+		driver.findElementByAccessibilityId("passwordField").sendKeys("passwordM@1");
+		Thread.sleep(1500);
+		driver.findElementByAccessibilityId("loginBtn").click();
+		Thread.sleep(5000);
+	     driver.findElementByAccessibilityId("passcode:0").sendKeys("1");
+	     driver.findElementByAccessibilityId("passcode:1").sendKeys("2");
+	     driver.findElementByAccessibilityId("passcode:2").sendKeys("3");
+	     driver.findElementByAccessibilityId("passcode:3").sendKeys("4");
+		Thread.sleep(2000);
+	     driver.findElementByAccessibilityId("passcode:0").sendKeys("1");
+	     driver.findElementByAccessibilityId("passcode:1").sendKeys("2");
+	     driver.findElementByAccessibilityId("passcode:2").sendKeys("5");
+	     driver.findElementByAccessibilityId("passcode:3").sendKeys("4");
+	   
+		Thread.sleep(2500);
+		Assert.assertEquals("Passcodes did not match. Try again.", driver.findElementByAccessibilityId("Passcodes did not match. Try again.").getText());
+		Thread.sleep(1500);
+		driver.findElementByAccessibilityId("Cancel").click();
+		Thread.sleep(2500);
+		
+		System.out.println("Valid credendentials and  pin");
+	     wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("emailField")));
+		driver.findElementByAccessibilityId("emailField").sendKeys("rkishan@qwinix.io");
+	     wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("passwordField")));
+		driver.findElementByAccessibilityId("passwordField").sendKeys("passwordM@1");
+		Thread.sleep(1500);
+		driver.findElementByAccessibilityId("loginBtn").click();
+		
+		Thread.sleep(5000);
+	     driver.findElementByAccessibilityId("passcode:0").sendKeys("1");
+	     driver.findElementByAccessibilityId("passcode:1").sendKeys("2");
+	     driver.findElementByAccessibilityId("passcode:2").sendKeys("3");
+	     driver.findElementByAccessibilityId("passcode:3").sendKeys("4");
+	     
+		Thread.sleep(2000);
+	     driver.findElementByAccessibilityId("passcode:0").sendKeys("1");
+	     driver.findElementByAccessibilityId("passcode:1").sendKeys("2");
+	     driver.findElementByAccessibilityId("passcode:2").sendKeys("3");
+	     driver.findElementByAccessibilityId("passcode:3").sendKeys("4");
+
+		Thread.sleep(3500);
+		Assert.assertEquals("Colorado Preventive Medicine", driver.findElementByAccessibilityId("Colorado Preventive Medicine").getText());
+		System.out.println("Login Successfull");	
+		//Click on settings btn
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("Icon Settings")));
+		driver.findElementByAccessibilityId("Icon Settings").click();
+//		wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("maroon btn")));
+//		//Click on Logout btn
+//	    driver.findElement(By.name("maroon btn")).click();
+		//Click on Logout btn
+	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("LogoutBtn")));
+		driver.findElementByAccessibilityId("LogoutBtn").click();
+		
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("Are you sure, you want to logout")));
+		//Accepting alert
+	    Alert acceptAlert = driver.switchTo().alert();
+	    acceptAlert.accept();
+	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("emailField")));
+	    Boolean isfieldFieldExist = driver.findElementByAccessibilityId("emailField").isDisplayed();
+	    Assert.assertTrue(isfieldFieldExist);
+		Thread.sleep(1500);
 	
-	   @Test 
+	}
+		
+		
+		
+	
+	
+	  // @Test (priority= 1)
 		public void loginWithInvalidCredentials() throws InterruptedException {
 	         System.out.println("InValid credndentials");
 	     	 WebDriverWait wait = new WebDriverWait(driver, 15);
@@ -96,7 +191,7 @@ public class LoginScreen{
 			Thread.sleep(4000);
 	}
 	
-	@Test 
+	//@Test (priority= 3)
 	public void loginWithValidCredentialsAndInvalidPin() throws InterruptedException {
 		System.out.println("Valid credndentials and invalid pin");
 		Thread.sleep(1500);
@@ -122,7 +217,7 @@ public class LoginScreen{
 		Thread.sleep(2500);
 	}
 	
-	   @Test 
+	  // @Test (priority= 4)
 		public void loginWithValidCredentialsAndPin() throws InterruptedException {
 			System.out.println("Valid credendentials and  pin");
 			Thread.sleep(1500);
@@ -159,7 +254,7 @@ public class LoginScreen{
 			Thread.sleep(2000);
 		}
 		
-		@Test  
+		//@Test  (priority= 5)
 		public void testForgotAction() throws InterruptedException {
 	        System.out.println("Forgot action");
 	        Thread.sleep(2000);
