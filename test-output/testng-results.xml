@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="5" passed="5">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="144880" started-at="2018-02-07T10:27:17Z" finished-at="2018-02-07T10:29:42Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="144880" started-at="2018-02-07T10:27:17Z" finished-at="2018-02-07T10:29:42Z">
+      <class name="com.qwinix.awsdev.screens.LoginScreen">
+        <test-method status="PASS" signature="setup()[pri:0, instance:com.qwinix.awsdev.screens.LoginScreen@4cf777e8]" name="setup" is-config="true" duration-ms="22933" started-at="2018-02-07T15:57:17Z" finished-at="2018-02-07T15:57:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="loginWithInvalidCredentials()[pri:0, instance:com.qwinix.awsdev.screens.LoginScreen@4cf777e8]" name="loginWithInvalidCredentials" duration-ms="26332" started-at="2018-02-07T15:57:40Z" finished-at="2018-02-07T15:58:07Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginWithInvalidCredentials -->
+        <test-method status="PASS" signature="loginWithInvalidEmail()[pri:0, instance:com.qwinix.awsdev.screens.LoginScreen@4cf777e8]" name="loginWithInvalidEmail" duration-ms="18263" started-at="2018-02-07T15:58:07Z" finished-at="2018-02-07T15:58:25Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginWithInvalidEmail -->
+        <test-method status="PASS" signature="loginWithValidCredentialsAndInvalidPin()[pri:0, instance:com.qwinix.awsdev.screens.LoginScreen@4cf777e8]" name="loginWithValidCredentialsAndInvalidPin" duration-ms="29212" started-at="2018-02-07T15:58:25Z" finished-at="2018-02-07T15:58:54Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginWithValidCredentialsAndInvalidPin -->
+        <test-method status="PASS" signature="loginWithValidCredentialsAndPin()[pri:0, instance:com.qwinix.awsdev.screens.LoginScreen@4cf777e8]" name="loginWithValidCredentialsAndPin" duration-ms="37583" started-at="2018-02-07T15:58:54Z" finished-at="2018-02-07T15:59:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginWithValidCredentialsAndPin -->
+        <test-method status="PASS" signature="testForgotAction()[pri:0, instance:com.qwinix.awsdev.screens.LoginScreen@4cf777e8]" name="testForgotAction" duration-ms="9924" started-at="2018-02-07T15:59:32Z" finished-at="2018-02-07T15:59:42Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testForgotAction -->
+        <test-method status="PASS" signature="teardown()[pri:0, instance:com.qwinix.awsdev.screens.LoginScreen@4cf777e8]" name="teardown" is-config="true" duration-ms="313" started-at="2018-02-07T15:59:42Z" finished-at="2018-02-07T15:59:42Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+      </class> <!-- com.qwinix.awsdev.screens.LoginScreen -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

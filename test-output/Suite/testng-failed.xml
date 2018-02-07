@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <test name="Test(failed)">
+    <classes>
+      <class name="com.qwinix.firstautomation.screens.LoginScreen">
+        <methods>
+          <include name="loginWithValidCredentialsAndInvalidPin"/>
+          <include name="loginWithInvalidEmail"/>
+          <include name="testForgotAction"/>
+          <include name="loginWithValidCredentialsAndPin"/>
+          <include name="setup"/>
+          <include name="loginWithInvalidCredentials"/>
+          <include name="teardown"/>
+        </methods>
+      </class> <!-- com.qwinix.firstautomation.screens.LoginScreen -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->
