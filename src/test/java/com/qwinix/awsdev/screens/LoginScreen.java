@@ -34,9 +34,9 @@ public class LoginScreen{
 		capabilities.setCapability("platformVersion", "11.2");
 		capabilities.setCapability("bundleId","com.docdock.ios");
 		capabilities.setCapability("deviceName", "iPhone");
-		capabilities.setCapability("app", ipaBuild);*/
+		capabilities.setCapability("app", ipaBuild);
 		
-		//capabilities.setCapability("bundleId","com.docdock.ios");
+		capabilities.setCapability("bundleId","com.docdock.ios");*/
 		driver = new IOSDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 		// Create an implicitly wait instance to define the timeout for 'findElement' commands.
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
